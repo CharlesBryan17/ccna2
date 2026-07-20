@@ -38,9 +38,11 @@ Config Steps
 7.CUCM (Analog SIP, IP Telephony SCCP)
 *
 Application	-Cisco Unified Call Manager
-Presentation	-G711,G729
+Presentation	-codec G711,G729
 Session		-RTP
-Transport	-SIP 5060, SCCP 2000
+Transport	     -SIP 5060, SCCP 2000
 Network		-Ping
 Data Link	-VLAN 100
 Physical	-PoE
+
+8.OSPF (Edge, CoreBABA, CUCM)
