@@ -1,0 +1,46 @@
+NOTES CCNA TRAINING
+DAY 1 Config
+-Cena =  Ctrl+C enable
+
+-SR
+-SS
+-CRS
+
+-hostname
+-secret password
+-password encryption
+STFU
+-no logging console
+-no ip domain-lookup
+
+-Console and Remote security
+-line console 0
+     password pass
+     login
+     exec-timeout 0 0
+-line vty 0 14
+      password pass
+      login
+      exec-timeout 0 0
+
+-nmap -v 10.21.1.2
+-show tcp brief
+-telnet port 23
+-SASAE
+
+Config Steps
+1.COREtaas
+2.COREbaba
+3.Trunk Ports (taas/baba)
+4.DHCP (baba)
+5.Creating and Placing Ports Inside a VLAN (baba)
+6.IP Camera
+7.CUCM (Analog SIP, IP Telephony SCCP)
+*
+Application	-Cisco Unified Call Manager
+Presentation	-G711,G729
+Session		-RTP
+Transport	-SIP 5060, SCCP 2000
+Network		-Ping
+Data Link	-VLAN 100
+Physical	-PoE
