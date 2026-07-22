@@ -1,0 +1,338 @@
+Day2: how to master ipv4/ipv6 like a 5 year NE exp.
+
+### TASK1:: fix your brain:
+
+Pera            ipv4           ipv6
+0-9             0-255          0-9,a-f
+
+4999       4.255.255.255        :4fff:
+5000          5.0.0.0           :5000:
+5001          5.0.0.1            5001
+
+6999       6.255.255.255        6fff  
+7,000         7.0.0.0          :7000:
+7001          7.0.0.1           7001
+
+3098       3.0.255.254          30fe 
+3099        3.0.255.255         30ff
+3100        3.1.0.0             3100
+
+5908       5.255.0.254         5f0e
+5909       5.255.0.255         5f0f
+5910       5.255.1.0           5f10
+
+
+
+
+### TASK2: LEARN HOW TO FINGER SOMEONE.
+
+Mask       CIDR   |   Mask       CIDR  
+128.0.0.0 = /1        248.0.0.0 = /5
+192.0.0.0 = /2        252.0.0.0 = /6
+224.0.0.0 = /3        254.0.0.0 = /7
+240.0.0.0 = /4        255.0.0.0 = /8
+                      255.128.0.0 = /9 = (2nd, 128i)
+
+
+
+### TASK3: IPv4 FINGER ACTIVITY
+
+PART 01
+/CIDR  	BASAG	3DOT DECIMAL	RIVAN FORMAT	NET ADDRESS	WILDCARD
+/6   	6+0+0+0	252.0.0.0	1st,4i	        120.0.0.0/6	
+/11  	8+3+0+0	255.224.0.0	2nd,32i	        92.224.0.0/11	
+/14  	8+6+0+0	255.252.0.0	2nd, 4i	        1.48.0.0/14	
+/21  	8+8+5+0	255.255.248.0	3rd, 8i	        50.70.216.0/21	
+/30  	8+8+8+6	255.255.255.252	4th, 4i	        10.20.30.204/30	
+/27  	8+8+8+3	255.255.255.224	4th, 32i	58.200.10.192/27	
+
+PART 02
+/CIDR	BASAG	3DOT DECIMAL	RIVAN FORMAT	NET ADDRESS	WILDCARD
+/17	8+8+1+0	255.255.128.0	3rd, 128i	75.25.0.0/17	
+/23	8+8+7+0	255.255.254.0	3rd, 2i	        192.65.202.0/23	
+/14	8+6+0+0	255.252.0.0	2nd, 4i	        2.108.0.0/14	
+/19	8+8+3+0	255.255.224.0	3rd, 32i	15.23.96.0/19	
+/18	8+8+2+0	255.255.192.0	3rd, 64i	56.101.0.0/18	
+/4	4+0+0+0	240.0.0.0	1st, 16i	160.0.0.0/4	
+
+PART 03
+/CIDR	BASAG	3DOT DECIMAL	RIVAN FORMAT	NET ADDRESS	WILDCARD
+/5	5+0+0+0	248.0.0.0	1st, 8i	        72.0.0.0/5	
+/12	8+4+0+0	255.240.0.0	2nd, 16i	155.176.0.0/12	
+/18	8+8+2+0	255.255.192.0	3rd, 64i	101.102.192.0/18	
+/30	8+8+8+6	255.255.255.252	4th, 4i	        214.218.6.228/30	
+/22	8+8+6+0	255.255.252.0	3rd, 4i	        223.255.96.0/22	
+
+
+
+
+task3: wild card computation: worldmethod5 mins vs rivan: 2sec
+
+/18 = 255.255.192.0
+    255.255.255.255
+______________________
+    0   0   63.  255
+
+
+                                   128    64    32   16   8   4   2   1
+
+4 = 2x2 = 2r2 = 00 01 10 11         0      0     0    0   0   1   0   0
+
+TASK4: Bit Length:
+
+195 = 8b
+13 =  4b
+1750 = 11b
+855 =  10b
+2,700 =  12b
+2 =  2b
+376 =  9b
+888 = 10b
+8 = 4b
+212 = 8b
+4,500 = 13b
+81 = 7b
+8,500  = 14b
+55 = 6b
+
+TASK5: HOW TO SUBNET IPV4 USING THE RIVAN FINGER METHOD:
+EU, USA, ME,
+CSIMETHOD: convert it, subract it/32, IpasoksaHiwa:
+Ex1. accenture to outsource chevon oil rigs: 10.0.0.0/8[16m]
+   ORbatanes         ORpalawan      ORmalaysia        ORsaudi
+    350devs           100devs         1500devs         2500devs
+C:   9bits             7bits           11bits           12bits
+/32   /23              /25              /21             /20
+    (3rd,2i)           4th,128i        3rd,8i           3rd,16i
+URs:+1
+  10.0.2.0/23     10.0.0.128/25     10.0.8.0/21        10.0.16.0/20
+1st:10.0.2.1      10.0.0.129        10.0.8.1           10.0.16.1
+last:10.0.3.255   10.0.0.255        10.0.15.255        10.0.31.255
+NOt:10.0.4.0/?     10.0.1.0/?      10.0.16.0/?         10.0.32.0/?
+         ORsulu                 ORtaiwan            ORalaska
+         50devs                240host/devs          4500devs:
+
+Conv:     6bits                  8bits               13bit
+sub:      /26                   /24                  /19
+ipas:    4th,64i                3rd,1i               3rd,32i
+URs    10.0.0.64/26          10.0.1.0/24            10.0.32.0/19
+1st:   10.0.0.65             10.0.1.1               10.0.32.1
+bc:    10.0.0.127            10.0.1.255             10.0.63.255
+NOT: 10.0.0.128/?           10.0.2.0/?             10.0.64.0/?
+
+
+
+TASK6: IMPLEMENT YOUR DESIGN:
+
+P1: BATANES BRANCH
+  - Network:                      10.0.2.0/23
+    First Valid (+1 Net):         10.0.2.1
+    Last Valid (-1 Broad):        10.0.3.254
+    Last IP/Broadcast (-1 Next):  10.0.3.255
+    Not:                          10.0.4.0/?
+
+  - Domain Name:                  bt.accenture.com
+  - VLAN:                         50
+  - Reservation:                  First 100IPs
+
+
+P2: PALAWAN BRANCH
+  - Network:                      10.0.0.128/25
+    First Valid (+1 Net):         10.0.0.129
+    Last Valid (-1 Broad):        10.0.0.254
+    Last IP/Broadcast (-1 Next):  10.0.0.255
+
+  - Domain Name:                  pl.accenture.com
+  - VLAN:                         60
+  - Reservation:                  First 50 IPs
+
+
+S1: MALAYSIA BRANCH
+  - Network:                      10.0.8.0/21
+    First Valid (+1 Net):         10.0.8.1
+    Last Valid (-1 Broad):        10.0.15.254
+    Last IP/Broadcast (-1 Next):  10.0.15.255
+
+  - Domain Name:                  ml.accenture.com
+  - VLAN:                         70
+  - Reservation:                  First 10 IPs
+
+
+
+
+
+S2: SAUDI BRANCH
+  - Network:                      10.0.16.0/20
+    First Valid (+1 Net):         10.0.16.1
+    Last Valid (-1 Broad):        10.0.31.254
+    Last IP/Broadcast (-1 Next):  10.0.31.255
+
+  - Domain Name:                  sa.accenture.com
+  - VLAN:                         80
+  - Reservation:                  First 200 IPs
+ 
+  - DHCP SERVER  C2/D2
+  - DHCP CLIENT  S2
+
+
+
+
+
+
+
+---------------
+!@C1/D1
+conf t
+ vlan 50
+  name bt.accenture.com
+  exit
+ int vlan 50
+  ip add 10.0.2.1 255.255.254.0
+  no shut
+ ip dhcp excluded-add 10.0.2.1  10.0.2.100
+ ip dhcp pool bt.accenture.com
+  network        10.0.2.0  255.255.254.0
+  default-router 10.0.2.1
+  dns-server     8.8.8.8  
+  domain-name    bt.accenture.com
+  end
+show ip dhcp binding
+
+
+
+
+
+!@C1
+conf t
+ vlan 70
+  name ml.accenture.com
+  exit
+ int vlan 70
+  ip add 10.0.8.1 255.255.248.0
+  no shut
+ ip dhcp excluded-add 10.0.8.1 10.0.8.10
+ ip dhcp pool ml.accenture.com
+  network        10.0.8.0 255.255.248.0
+  default-router 10.0.8.1
+  dns-server     8.8.8.8  
+  domain-name    ml.accenture.com
+  end
+show ip dhcp binding
+
+
+
+
+
+
+!@C1/D1
+conf t
+ vlan 50
+  name bt.accenture.com
+  exit
+ int vlan 50
+  ip add 10.0.2.1 255.255.254.0
+  no shut
+ ip dhcp excluded-add 10.0.2.1  10.0.2.100
+ ip dhcp pool bt.accenture.com
+  network        10.0.2.0  255.255.254.0
+  default-router 10.0.2.1
+  dns-server     8.8.8.8  
+  domain-name    bt.accenture.com
+  end
+show ip dhcp binding
+
+!@A1
+conf t
+ int e0/0
+  switchport mode access
+  switchport access vlan 50
+  end
+show vlan brief
+
+
+!@P1
+conf t
+ int e0/0
+  no shut
+  ip add dhcp
+  end
+show ip int br
+
+
+
+
+
+!@C1
+conf t
+ int e1/0
+  switchport mode access
+  switchport access vlan 70
+  end
+show vlan brief
+
+
+!@S1
+conf t
+ int e1/0
+  no shut
+  ip add dhcp
+  end
+show ip int br
+
+
+
+
+
+
+!@CoreTAAS
+conf t
+ ip routing
+ int fa0/9
+  NO SW
+  ip add 192.168.69.30  255.255.255.224       .0
+  end
+
+
+!@CoreBABA
+conf t
+ ip routing
+ int fa0/9
+  NO SW
+  ip add 192.168.69.35  255.255.255.224            .32
+  end
+ping 192.168.69.30
+
+
+
+
+
+Find the Network:
+172.28.228.144/18
+
+STEP 1 : Rivan Format
+/18 (3rd, 64i)
+
+64I  = 0, 64,  128,   192,  256
+    
+NETWORK: 172.28.192.0 /18
+First Valid: 172.28.192.1
+
+
+172.28.228.144/21
+1. (3rd, 8i)
+
+80 + 80 = 160 + 40 = 200 + 24 = 224 + 8 = 232
+
+NETWORK 172.28.224.0/21
+
+
+
+
+
+
+
+
+
+
+
+
